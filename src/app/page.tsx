@@ -411,8 +411,8 @@ export default function Home() {
               <ShieldCheck aria-hidden="true" className="h-5 w-5 text-[#2b8a72]" />
               <h3 className="mt-4 text-xl font-black">실무 관점</h3>
               <p className="mt-3 leading-7 text-[#52635e]">
-                지금은 보안 회사에서 일하며, 아이디어를 안전하고 현실적인
-                구현 단위로 보는 일을 하고 있습니다.
+                지금은 보안 회사에서 B2B 영업을 하며, 고객이 실제로 불편해하는
+                지점과 서비스가 선택되는 기준을 보고 있습니다.
               </p>
             </div>
           </div>
@@ -468,17 +468,11 @@ export default function Home() {
 
       <section className="bg-[#f7faf7] px-5 py-20 sm:px-8 sm:py-24 lg:py-28">
         <div className="mx-auto max-w-6xl">
-          <div className="flex flex-col gap-5 sm:flex-row sm:items-end sm:justify-between">
-            <div className="max-w-2xl">
+          <div className="max-w-2xl">
             <Ban aria-hidden="true" className="h-8 w-8 text-[#d65a3f]" />
             <h2 className="mt-4 text-3xl font-black leading-tight">
               이런 경우에는 맞지 않을 수 있습니다.
             </h2>
-            </div>
-            <p className="max-w-md leading-7 text-[#52635e]">
-              이번 시간은 정해진 강의보다, 실제 아이디어를 함께 좁히는 쪽에
-              가깝습니다.
-            </p>
           </div>
           <div className="mt-10 grid gap-5 lg:grid-cols-3">
             {notForPeople.map((item) => (
