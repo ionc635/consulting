@@ -15,7 +15,9 @@ import {
   UserRound,
 } from "lucide-react";
 
-const applicationUrl = process.env.NEXT_PUBLIC_APPLICATION_FORM_URL || "#apply";
+const applicationUrl =
+  process.env.NEXT_PUBLIC_APPLICATION_FORM_URL ||
+  "https://forms.gle/dMcR1aswieDDaPAW9";
 const isExternalApplication = applicationUrl !== "#apply";
 
 const sessionFacts = [
@@ -123,6 +125,32 @@ function ApplyButton({ variant = "dark" }: { variant?: "dark" | "light" }) {
   );
 }
 
+function IllustrationDepth() {
+  return (
+    <defs>
+      <linearGradient id="sceneSheen" x1="84" x2="560" y1="40" y2="390">
+        <stop stopColor="#FFFFFF" stopOpacity="0.58" />
+        <stop offset="0.5" stopColor="#FFFFFF" stopOpacity="0.1" />
+        <stop offset="1" stopColor="#173D38" stopOpacity="0.09" />
+      </linearGradient>
+      <linearGradient id="screenGlow" x1="198" x2="442" y1="162" y2="286">
+        <stop stopColor="#1F5A51" />
+        <stop offset="1" stopColor="#0F2D29" />
+      </linearGradient>
+      <linearGradient id="paperTone" x1="92" x2="312" y1="72" y2="346">
+        <stop stopColor="#FFFFFF" />
+        <stop offset="1" stopColor="#F2F7F5" />
+      </linearGradient>
+      <filter id="objectShadow" x="-20%" y="-20%" width="140%" height="150%">
+        <feDropShadow dx="0" dy="10" stdDeviation="10" floodColor="#173D38" floodOpacity="0.16" />
+      </filter>
+      <filter id="softShadow" x="-25%" y="-25%" width="150%" height="150%">
+        <feDropShadow dx="0" dy="6" stdDeviation="7" floodColor="#173D38" floodOpacity="0.12" />
+      </filter>
+    </defs>
+  );
+}
+
 function SoftIllustration({
   type,
   className = "",
@@ -141,23 +169,25 @@ function SoftIllustration({
   if (type === "hero") {
     return (
       <svg {...commonProps} aria-label="카페 테이블에서 노트북으로 서비스를 기획하는 일러스트">
+        <IllustrationDepth />
         <rect width="640" height="420" rx="0" fill="#EAF4EF" />
         <path d="M0 304H640V420H0V304Z" fill="#D6E8DF" />
-        <path d="M76 84H214V235H76V84Z" fill="#FFFFFF" />
+        <path d="M76 84H214V235H76V84Z" fill="url(#paperTone)" filter="url(#softShadow)" />
         <path d="M95 106H195V122H95V106Z" fill="#7FB7A6" />
         <path d="M95 145H182V157H95V145Z" fill="#B7CDC5" />
         <path d="M95 174H170V186H95V174Z" fill="#B7CDC5" />
-        <path d="M432 56H560V174H432V56Z" fill="#FFFFFF" />
+        <path d="M432 56H560V174H432V56Z" fill="url(#paperTone)" filter="url(#softShadow)" />
         <path d="M455 82H538V98H455V82Z" fill="#F0B35B" />
         <path d="M455 122H520V134H455V122Z" fill="#B7CDC5" />
-        <rect x="170" y="136" width="300" height="176" rx="22" fill="#FFFFFF" />
-        <rect x="198" y="162" width="244" height="124" rx="14" fill="#173D38" />
+        <rect x="170" y="136" width="300" height="176" rx="22" fill="url(#paperTone)" filter="url(#objectShadow)" />
+        <rect x="198" y="162" width="244" height="124" rx="14" fill="url(#screenGlow)" />
+        <path d="M212 178H428" stroke="#FFFFFF" strokeOpacity="0.16" strokeWidth="8" strokeLinecap="round" />
         <path d="M222 188H328V202H222V188Z" fill="#F7FAF7" opacity="0.9" />
         <path d="M222 220H412V231H222V220Z" fill="#7FB7A6" />
         <path d="M222 246H366V257H222V246Z" fill="#7FB7A6" />
-        <path d="M134 313H506L470 356H170L134 313Z" fill="#C8DCD4" />
+        <path d="M134 313H506L470 356H170L134 313Z" fill="#C8DCD4" filter="url(#softShadow)" />
         <path d="M192 323H448L434 340H206L192 323Z" fill="#FFFFFF" opacity="0.75" />
-        <rect x="502" y="248" width="62" height="54" rx="12" fill="#F0B35B" />
+        <rect x="502" y="248" width="62" height="54" rx="12" fill="#F0B35B" filter="url(#softShadow)" />
         <path d="M515 248V239H551V248" stroke="#173D38" strokeWidth="10" strokeLinecap="round" />
         <path d="M92 300C111 270 153 270 171 300" stroke="#D65A3F" strokeWidth="18" strokeLinecap="round" />
         <circle cx="132" cy="244" r="38" fill="#F7C9BA" />
@@ -165,10 +195,11 @@ function SoftIllustration({
         <path d="M526 303C542 273 584 272 600 303" stroke="#7FB7A6" strokeWidth="18" strokeLinecap="round" />
         <circle cx="564" cy="247" r="36" fill="#F7C9BA" />
         <path d="M534 236C543 208 586 201 603 232C580 225 557 226 534 236Z" fill="#173D38" />
-        <rect x="50" y="335" width="116" height="42" rx="21" fill="#FFFFFF" />
+        <rect x="50" y="335" width="116" height="42" rx="21" fill="#FFFFFF" filter="url(#softShadow)" />
         <path d="M76 356H139" stroke="#D65A3F" strokeWidth="10" strokeLinecap="round" />
-        <rect x="471" y="330" width="118" height="44" rx="22" fill="#FFFFFF" />
+        <rect x="471" y="330" width="118" height="44" rx="22" fill="#FFFFFF" filter="url(#softShadow)" />
         <path d="M496 352H560" stroke="#2B8A72" strokeWidth="10" strokeLinecap="round" />
+        <rect width="640" height="420" fill="url(#sceneSheen)" opacity="0.45" />
       </svg>
     );
   }
@@ -176,21 +207,23 @@ function SoftIllustration({
   if (type === "planning") {
     return (
       <svg {...commonProps} aria-label="서비스 아이디어를 카드로 정리하는 일러스트">
+        <IllustrationDepth />
         <rect width="640" height="420" rx="24" fill="#F2F8F6" />
-        <rect x="72" y="74" width="184" height="250" rx="20" fill="#FFFFFF" />
+        <rect x="72" y="74" width="184" height="250" rx="20" fill="url(#paperTone)" filter="url(#objectShadow)" />
         <rect x="100" y="108" width="103" height="18" rx="9" fill="#173D38" />
         <rect x="100" y="150" width="124" height="12" rx="6" fill="#B7CDC5" />
         <rect x="100" y="184" width="92" height="12" rx="6" fill="#B7CDC5" />
         <rect x="100" y="218" width="132" height="12" rx="6" fill="#B7CDC5" />
-        <rect x="306" y="92" width="242" height="70" rx="18" fill="#F0B35B" />
-        <rect x="306" y="188" width="242" height="70" rx="18" fill="#7FB7A6" />
-        <rect x="306" y="284" width="242" height="70" rx="18" fill="#D65A3F" />
+        <rect x="306" y="92" width="242" height="70" rx="18" fill="#F0B35B" filter="url(#softShadow)" />
+        <rect x="306" y="188" width="242" height="70" rx="18" fill="#7FB7A6" filter="url(#softShadow)" />
+        <rect x="306" y="284" width="242" height="70" rx="18" fill="#D65A3F" filter="url(#softShadow)" />
         <path d="M154 339C190 300 244 300 280 339" stroke="#173D38" strokeWidth="22" strokeLinecap="round" />
         <circle cx="217" cy="258" r="42" fill="#F7C9BA" />
         <path d="M177 252C190 218 236 212 258 245C235 237 207 237 177 252Z" fill="#173D38" />
         <path d="M348 128H504" stroke="#FFFFFF" strokeWidth="12" strokeLinecap="round" />
         <path d="M348 224H490" stroke="#FFFFFF" strokeWidth="12" strokeLinecap="round" />
         <path d="M348 320H466" stroke="#FFFFFF" strokeWidth="12" strokeLinecap="round" />
+        <rect width="640" height="420" rx="24" fill="url(#sceneSheen)" opacity="0.4" />
       </svg>
     );
   }
@@ -198,19 +231,22 @@ function SoftIllustration({
   if (type === "coding") {
     return (
       <svg {...commonProps} aria-label="Codex와 함께 구현 경로를 잡는 일러스트">
+        <IllustrationDepth />
         <rect width="640" height="420" rx="24" fill="#EEF5F1" />
-        <rect x="78" y="96" width="320" height="206" rx="22" fill="#173D38" />
+        <rect x="78" y="96" width="320" height="206" rx="22" fill="url(#screenGlow)" filter="url(#objectShadow)" />
+        <path d="M96 116H378" stroke="#FFFFFF" strokeOpacity="0.13" strokeWidth="9" strokeLinecap="round" />
         <path d="M112 138H216" stroke="#F7FAF7" strokeWidth="12" strokeLinecap="round" />
         <path d="M112 177H310" stroke="#7FB7A6" strokeWidth="12" strokeLinecap="round" />
         <path d="M112 216H274" stroke="#F0B35B" strokeWidth="12" strokeLinecap="round" />
         <path d="M112 255H336" stroke="#7FB7A6" strokeWidth="12" strokeLinecap="round" />
-        <path d="M48 303H430L395 348H83L48 303Z" fill="#C8DCD4" />
-        <rect x="438" y="112" width="124" height="168" rx="24" fill="#FFFFFF" />
+        <path d="M48 303H430L395 348H83L48 303Z" fill="#C8DCD4" filter="url(#softShadow)" />
+        <rect x="438" y="112" width="124" height="168" rx="24" fill="url(#paperTone)" filter="url(#objectShadow)" />
         <path d="M469 161L491 183L532 142" stroke="#2B8A72" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
         <rect x="466" y="222" width="72" height="14" rx="7" fill="#B7CDC5" />
         <circle cx="499" cy="320" r="38" fill="#F0B35B" />
         <path d="M482 320H516" stroke="#173D38" strokeWidth="12" strokeLinecap="round" />
         <path d="M499 303V337" stroke="#173D38" strokeWidth="12" strokeLinecap="round" />
+        <rect width="640" height="420" rx="24" fill="url(#sceneSheen)" opacity="0.35" />
       </svg>
     );
   }
@@ -218,18 +254,20 @@ function SoftIllustration({
   if (type === "painpoint") {
     return (
       <svg {...commonProps} aria-label="페인포인트를 찾아 다음 실험을 정하는 일러스트">
+        <IllustrationDepth />
         <rect width="640" height="420" rx="24" fill="#F7F1EC" />
-        <rect x="96" y="92" width="210" height="220" rx="22" fill="#FFFFFF" />
+        <rect x="96" y="92" width="210" height="220" rx="22" fill="url(#paperTone)" filter="url(#objectShadow)" />
         <rect x="130" y="126" width="116" height="16" rx="8" fill="#173D38" />
         <rect x="130" y="166" width="136" height="12" rx="6" fill="#B7CDC5" />
         <rect x="130" y="198" width="92" height="12" rx="6" fill="#B7CDC5" />
         <rect x="130" y="230" width="124" height="12" rx="6" fill="#B7CDC5" />
-        <circle cx="408" cy="190" r="72" fill="#FFFFFF" />
+        <circle cx="408" cy="190" r="72" fill="#FFFFFF" filter="url(#objectShadow)" />
         <path d="M382 190L400 208L438 168" stroke="#D65A3F" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
         <path d="M459 241L529 311" stroke="#173D38" strokeWidth="24" strokeLinecap="round" />
-        <rect x="372" y="310" width="168" height="46" rx="23" fill="#7FB7A6" />
+        <rect x="372" y="310" width="168" height="46" rx="23" fill="#7FB7A6" filter="url(#softShadow)" />
         <path d="M410 333H502" stroke="#FFFFFF" strokeWidth="10" strokeLinecap="round" />
         <path d="M108 334C144 298 204 298 240 334" stroke="#F0B35B" strokeWidth="20" strokeLinecap="round" />
+        <rect width="640" height="420" rx="24" fill="url(#sceneSheen)" opacity="0.35" />
       </svg>
     );
   }
@@ -237,37 +275,42 @@ function SoftIllustration({
   if (type === "apply") {
     return (
       <svg {...commonProps} aria-label="지원 후 첫 단계를 정리하는 일러스트">
+        <IllustrationDepth />
         <rect width="640" height="420" rx="24" fill="#EAF4EF" />
-        <rect x="92" y="72" width="220" height="274" rx="24" fill="#FFFFFF" />
+        <rect x="92" y="72" width="220" height="274" rx="24" fill="url(#paperTone)" filter="url(#objectShadow)" />
         <rect x="124" y="112" width="112" height="16" rx="8" fill="#173D38" />
         <rect x="124" y="154" width="144" height="12" rx="6" fill="#B7CDC5" />
         <rect x="124" y="188" width="112" height="12" rx="6" fill="#B7CDC5" />
         <rect x="124" y="222" width="136" height="12" rx="6" fill="#B7CDC5" />
-        <rect x="124" y="272" width="124" height="40" rx="20" fill="#173D38" />
+        <rect x="124" y="272" width="124" height="40" rx="20" fill="#173D38" filter="url(#softShadow)" />
         <path d="M150 292H222" stroke="#FFFFFF" strokeWidth="10" strokeLinecap="round" />
-        <circle cx="410" cy="154" r="72" fill="#FFFFFF" />
+        <circle cx="410" cy="154" r="72" fill="#FFFFFF" filter="url(#objectShadow)" />
         <path d="M384 154L404 174L444 132" stroke="#2B8A72" strokeWidth="16" strokeLinecap="round" strokeLinejoin="round" />
-        <rect x="354" y="250" width="194" height="58" rx="20" fill="#F0B35B" />
+        <rect x="354" y="250" width="194" height="58" rx="20" fill="#F0B35B" filter="url(#softShadow)" />
         <path d="M394 280H508" stroke="#FFFFFF" strokeWidth="12" strokeLinecap="round" />
         <path d="M318 334C354 292 418 292 454 334" stroke="#D65A3F" strokeWidth="20" strokeLinecap="round" />
+        <rect width="640" height="420" rx="24" fill="url(#sceneSheen)" opacity="0.4" />
       </svg>
     );
   }
 
   return (
     <svg {...commonProps} aria-label="카페에서 1대1로 서비스 아이디어를 나누는 일러스트">
+      <IllustrationDepth />
       <rect width="640" height="420" rx="24" fill="#EFF6F2" />
-      <rect x="90" y="114" width="460" height="190" rx="28" fill="#FFFFFF" />
-      <rect x="190" y="162" width="260" height="118" rx="18" fill="#173D38" />
+      <rect x="90" y="114" width="460" height="190" rx="28" fill="url(#paperTone)" filter="url(#objectShadow)" />
+      <rect x="190" y="162" width="260" height="118" rx="18" fill="url(#screenGlow)" />
+      <path d="M208 178H432" stroke="#FFFFFF" strokeOpacity="0.13" strokeWidth="8" strokeLinecap="round" />
       <path d="M218 198H322" stroke="#F7FAF7" strokeWidth="12" strokeLinecap="round" />
       <path d="M218 232H406" stroke="#7FB7A6" strokeWidth="12" strokeLinecap="round" />
-      <path d="M125 301H515L476 350H164L125 301Z" fill="#C8DCD4" />
+      <path d="M125 301H515L476 350H164L125 301Z" fill="#C8DCD4" filter="url(#softShadow)" />
       <circle cx="138" cy="186" r="36" fill="#F7C9BA" />
       <circle cx="502" cy="186" r="36" fill="#F7C9BA" />
       <path d="M102 180C116 149 158 143 178 174C154 168 128 168 102 180Z" fill="#173D38" />
       <path d="M468 180C481 149 524 143 544 174C520 168 494 168 468 180Z" fill="#173D38" />
-      <rect x="72" y="250" width="84" height="42" rx="21" fill="#F0B35B" />
-      <rect x="486" y="250" width="84" height="42" rx="21" fill="#D65A3F" />
+      <rect x="72" y="250" width="84" height="42" rx="21" fill="#F0B35B" filter="url(#softShadow)" />
+      <rect x="486" y="250" width="84" height="42" rx="21" fill="#D65A3F" filter="url(#softShadow)" />
+      <rect width="640" height="420" rx="24" fill="url(#sceneSheen)" opacity="0.4" />
     </svg>
   );
 }
